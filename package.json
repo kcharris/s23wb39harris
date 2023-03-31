@@ -1,0 +1,25 @@
+{
+  "name": "s23wb39harris",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "^4.3.4",
+    "express": "^4.18.2",
+    "http-errors": "^2.0.0",
+    "latest": "^0.2.0",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.2"
+  },
+  "description": "server project 2",
+  "main": "app.js",
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "author": "Kevin Harris",
+  "license": "ISC"
+}
