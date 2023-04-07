@@ -27,3 +27,13 @@ block content
       each item in results
         div(class='col-sm-2') Shape: #{item["shape"]},<br> Weight: #{item["weight"]},<br> Cost: #{item["cost"]}
       
+  
+  script. 
+    let divs = document.getElementsByClassName("col-sm-2")
+    for(let i = 0; i < divs.length; i++){
+      divs[i].onclick = "buy(i)"
+    }
+    function buy(i){
+      alert(`You purchased item ${i}`)
+    }
+      
