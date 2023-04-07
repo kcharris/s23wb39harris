@@ -4,4 +4,10 @@ extends layout
 block content
 
   h1= title
+  -let image_names = ["bubble", "snowman", "star", "triangle", "twigs"]
+  -for(let i = 0; i<3; i++){
+   - let r = Math.floor(Math.random()*5)
+   - r_image = image_names[r]
+   img(src=`${"images/" + r_image + ".jpg"}` alt=`${r_image}` height=300 width=300)
+  -}
   
