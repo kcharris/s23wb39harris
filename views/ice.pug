@@ -5,26 +5,10 @@ block content
 
   h1= title
   -
-    let results = [
-      {
-        shape: "cat",
-        weight: 8,
-        cost: 9
-      },
-      {
-        shape: "duck",
-        weight: 42,
-        cost: 92
-      },
-      {
-        shape: "ketchup",
-        weight: 1,
-        cost: 3.47
-      }
-    ]
+    let items = results
   div(class="container-fluid")
     div(class="row")
-      each item in results
+      each item in items
         div(class='col-sm-2') Shape: #{item["shape"]},<br> Weight: #{item["weight"]},<br> Cost: #{item["cost"]}
       
   

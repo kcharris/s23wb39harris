@@ -27,3 +27,15 @@ res.send('NOT IMPLEMENTED: ice delete DELETE ' + req.params.id);
 exports.ice_update_put = function(req, res) {
 res.send('NOT IMPLEMENTED: ice update PUT' + req.params.id);
 };
+// VIEWS
+// Handle a show all view
+exports.ice_view_all_Page = async function(req, res) {
+    try{
+    theIces = await Ice.find();
+    res.render('ice', { title: 'Ice Search Results', results: theIces });
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+};
