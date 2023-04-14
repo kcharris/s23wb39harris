@@ -48,9 +48,24 @@ exports.ice_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: ice delete DELETE ' + req.params.id);
 };
 // Handle ice update form on PUT.
-exports.ice_update_put = function(req, res) {
-res.send('NOT IMPLEMENTED: ice update PUT' + req.params.id);
-};
+// Handle ice update form on PUT.
+exports.ice_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`)
+    try {
+        let toUpdate = await Ice.findById( req.params.id)
+        // Do updates of properties
+        if(req.body.ice_type) toUpdate.ice_type = req.body.ice_type;
+        if(req.body.cost) toUpdate.cost = req.body.cost;
+        if(req.body.shape) toUpdate.shape = req.body.shape;
+        if(req.body.weight) toUpdate.weight = req.body.weight;
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": ${err}: Update for id ${req.params.id} failed`);
+    }
+    };
 // VIEWS
 // Handle a show all view
 exports.ice_view_all_Page = async function(req, res) {
