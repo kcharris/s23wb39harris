@@ -8,7 +8,7 @@ var ice_controller = require('../controllers/ice');
 router.get('/', api_controller.api);
 /// ice ROUTES ///
 // POST request for creating a ice.
-router.post('/ices', ice_controller.ice_create_post);
+router.post('/ices', () => {ice_controller.ice_create_post});
 // DELETE request to delete ice.
 router.delete('/ices/:id', ice_controller.ice_delete);
 // PUT request to update ice.
