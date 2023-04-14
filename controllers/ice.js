@@ -1,8 +1,16 @@
 var Ice = require('../models/ice');
 // List of all ices
-exports.ice_list = function(req, res) {
-res.send('NOT IMPLEMENTED: Ice list');
+exports.ice_list = async function(req, res) {
+    try{
+        theIces = await Ice.find();
+        res.send(theIces);
+        }
+    catch(err){
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+    }
 };
+        
 // for a specific ice.
 exports.ice_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: Ice detail: ' + req.params.id);
