@@ -1,21 +1,24 @@
 extends layout
 
 block content
-    h1= title
-    - let iceid = toShow._id
-    - let ice_shape = toShow.shape
-    - let iceweight = toShow.weight
-    - let icecost = toShow.cost
-    div
-        div.row
-            div(class='iceAttr mr-3') ice ID is:
-            div #{iceid}
-        div.row
-            div(class='iceAttr mr-3') ice Shape is:
-            div #{ice_shape}
-        div.row
-            div(class='iceAttr mr-3') ice weight is:
-            div #{iceweight}
-        div.row
-            div(class='iceAttr mr-3') ice Cost is:
-            div #{icecost}
+    if(toShow == null)
+        h2 no instance to show details!
+    else
+        h1= title
+        - let iceid = toShow._id
+        - let ice_shape = toShow.shape
+        - let iceweight = toShow.weight
+        - let icecost = toShow.cost
+        div
+            div.row
+                div(class='iceAttr mr-3') ice ID is:
+                div #{iceid}
+            div.row
+                div(class='iceAttr mr-3') ice Shape is:
+                div #{ice_shape}
+            div.row
+                div(class='iceAttr mr-3') ice weight is:
+                div #{iceweight}
+            div.row
+                div(class='iceAttr mr-3') ice Cost is:
+                div #{icecost}
