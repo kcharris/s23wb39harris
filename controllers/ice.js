@@ -47,6 +47,21 @@ exports.Ice_create_post = async function(req, res) {
 exports.ice_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: ice delete DELETE ' + req.params.id);
 };
+// Handle Ice delete on DELETE.
+exports.ice_delete = async function(req, res) {
+console.log("delete " + req.params.id)
+try {
+result = await Ice.findByIdAndDelete( req.params.id)
+console.log("Removed " + result)
+res.send(result)
+} catch (err) {
+res.status(500)
+res.send(`{"error": Error deleting ${err}}`);
+}
+};
+
+
+
 // Handle ice update form on PUT.
 // Handle ice update form on PUT.
 exports.ice_update_put = async function(req, res) {
@@ -78,3 +93,56 @@ exports.ice_view_all_Page = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
 };
+// Handle a show one view with id specified by query
+exports.ice_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await Ice.findById( req.query.id)
+    res.render('icedetail',
+    { title: 'Ice Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+    // Handle building the view for creating a ice.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.ice_create_Page = function(req, res) {
+console.log("create view")
+try{
+res.render('icecreate', { title: 'ice Create'});
+}
+catch(err){
+res.status(500)
+res.send(`{'error': '${err}'}`);
+}
+};
+// Handle building the view for updating a ice.
+// query provides the id
+exports.ice_update_Page = async function(req, res) {
+    console.log("update view for item "+req.query.id)
+    try{
+    let result = await Ice.findById(req.query.id)
+    res.render('iceupdate', { title: 'ice Update', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+// Handle a delete one view with id from query
+exports.ice_delete_Page = async function(req, res) {
+    console.log("Delete view for id " + req.query.id)
+    try{
+    result = await Ice.findById(req.query.id)
+    res.render('icedelete', { title: 'ice Delete', toShow:
+    result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
+
