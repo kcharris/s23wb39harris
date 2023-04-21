@@ -6,13 +6,18 @@ block content
   h1= title
   -
     let items = results
+  
   div(class="container-fluid")
     div(class="row")
       each item in items
+        - let destination = `dispatch(\"/ice/update?id=${item._id}\")`
         div(class='col-sm-2') Shape: #{item["shape"]},<br> Weight: #{item["weight"]},<br> Cost: #{item["cost"]}
-      
+          button.btn( class="btn-primary ml-1", onclick= destination) Update
   
-  script. 
+  script.
+    function dispatch(path){
+      window.location.href=path
+    }
     let divs = document.getElementsByClassName("col-sm-2")
     for(let i = 0; i < divs.length; i++){
       divs[i].onclick = "buy(i)"
