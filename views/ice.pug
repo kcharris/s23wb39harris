@@ -8,7 +8,7 @@ block content
     let items = results
   
   div(class="container-fluid")
-    div(class="row")
+    div(class="row m-1")
       each item in items
         - let destination = `dispatch(\"/ice/update?id=${item._id}\")`
         div(class='col-sm-2') Shape: #{item["shape"]},<br> Weight: #{item["weight"]},<br> Cost: #{item["cost"]}
