@@ -28,7 +28,7 @@ block content
     script.
         function cancel() {
             // Go back to the home page for the ice collection
-            window.location.href='/ices'
+            window.location.href='/ice'
         }
     script.
         function deleteOnid() {
@@ -41,7 +41,7 @@ block content
                 return resp.json(); // or resp.text() or whatever the server sends
             }).then((body) => {
             alert("Delete succeded")
-                window.location.href='/ices'
+                window.location.href='/ice'
                 // TODO handle body
             }).catch((error) => {
                 // TODO handle error

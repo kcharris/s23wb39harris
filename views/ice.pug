@@ -7,12 +7,21 @@ block content
   -
     let items = results
   
+  button.btn( class="btn-primary ml-1", onclick= `dispatch(\"/ice/create)`) Create
+  
   div(class="container-fluid")
     div(class="row m-1")
       each item in items
         - let destination = `dispatch(\"/ice/update?id=${item._id}\")`
         div(class='col-sm-2') Shape: #{item["shape"]},<br> Weight: #{item["weight"]},<br> Cost: #{item["cost"]}
-          button.btn( class="btn-primary ml-1", onclick= destination) Update
+          br
+          button.btn( class="btn-warning ml-1", onclick= destination) Update
+          br
+          button.btn( class="btn-primary ml-1", onclick= `dispatch(\"/ice/detail?id=${item._id}\")`) Details
+          br
+          button.btn( class="btn-danger ml-1", onclick= `dispatch(\"/ice/delete?id=${item._id}\")`) Delete
+
+        
   
   script.
     function dispatch(path){
